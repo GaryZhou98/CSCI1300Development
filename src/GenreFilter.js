@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './GenreFilter.css'
+import './FilterSection.css'
 
 class GenreFilter extends Component {
   constructor(props) {
