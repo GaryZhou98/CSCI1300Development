@@ -1,0 +1,31 @@
+.HeadingContainer {
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+  /* height: 100vh;
+  width: 100vw; */
+}
+
+.ButtonContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.HeadingText {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.FilterButton {
+  border-radius: 15px;
+  font-size: 18px;
+  background-color: aliceblue;
+  width: 90px;
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
