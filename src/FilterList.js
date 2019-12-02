@@ -6,41 +6,70 @@ import FilterItem from './FilterItem'
 import GenreFilter from './GenreFilter'
 import EraFilter from './EraFilter'
 
+
 class FilterList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       items: initialItems(),
+      displayItems: initialItems(),
+      favoriteItems: [],
       genre: 'All',
       era: 'All',
       sort: false,
+      favoriteOnly: false,
     }
 
     console.log(this.state.items);
   }
 
+
+  render() {
+    let favoriteButtonText = this.state.favoriteOnly ? 'Show All' : 'Show Favorites Only'
+    console.log(this.state)
+    return (
+      <div className = "ListContainer">
+        <div className = "HeaderContainer">
+          <h1 className = "Header">Find Your Favorite Musicians!</h1>
+          <GenreFilter onClickAll={this.filterGenreAll} onClickRap={this.filterRap} onClickPop={this.filterPop}/>
+          <EraFilter onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
+          <button className = "SortButton" onClick={this.sortByInitial}>Sort by initial</button>
+          <button className = "SortButton" onClick={() => {this.setState((state)=> {return {...state, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
+        </div>
+        <div className = "ItemContainer">
+          {
+            this.state.displayItems.map((item, key) => {
+              return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} favoriteOnly={this.state.favoriteOnly} toggleFavorite={() => {this.toggleFavorite(item)}} artist={item.artist} genre={item.genre} img={item.img}/></div>
+            })
+          }
+        </div> 
+      </div>
+    )
+  }
+
+  
   filterGenreAll = () => {
     this.setState((state) => {
-      let temp = initialItems();
+      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
       return {...state, 
         genre: 'All', 
-        items: temp.filter((item) => {return state.era === 'All' | item.era === state.era})}
+        displayItems: temp.filter((item) => {return state.era === 'All' | item.era === state.era})}
     })
   }
 
   filterRap = () => {
     this.setState((state) => {
-      let temp = initialItems();
+      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
       return {...state, 
         genre: 'Rap', 
-        items: temp
+        displayItems: temp
         .filter((item) => {return item.genre === 'Rap'})
         .filter((item) => {return state.era === 'All' | item.era === state.era})}
     })
@@ -48,13 +77,13 @@ class FilterList extends Component {
 
   filterPop = () => {
     this.setState((state) => {
-      let temp = initialItems();
+      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
       return {...state, 
         genre: 'Pop', 
-        items: temp
+        displayItems: temp
         .filter((item) => {return item.genre === 'Pop'})
         .filter((item) => {return state.era === 'All' | item.era === state.era})}
     })
@@ -63,25 +92,25 @@ class FilterList extends Component {
   
   filterEraAll = () => {
     this.setState((state) => {
-      let temp = initialItems();
+      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
       return {...state, 
         era: 'All', 
-        items: temp.filter((item) => {return state.genre === 'All' | item.genre === state.genre})}
+        displayItems: temp.filter((item) => {return state.genre === 'All' | item.genre === state.genre})}
     })
   }
 
   filterNineties = () => {
     this.setState((state) => {
-      let temp = initialItems();
+      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
       return {...state, 
         era: '1990s',
-        items: temp
+        displayItems: temp
         .filter((item) => {return item.era === '1990s'})
         .filter((item) => {return state.genre === 'All' | item.genre === state.genre})}
     })
@@ -89,13 +118,13 @@ class FilterList extends Component {
 
   filterZeros = () => {
     this.setState((state) => {
-      let temp = initialItems();
+      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
       return {...state, 
         era: '2000s',
-        items: temp
+        displayItems: temp
         .filter((item) => {return item.era === '2000s'})
         .filter((item) => {return state.genre === 'All' | item.genre === state.genre})}
     })
@@ -103,13 +132,13 @@ class FilterList extends Component {
 
   filterTens = () => {
     this.setState((state) => {
-      let temp = initialItems();
+      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
       return {...state, 
         era: '2010s',
-        items: temp
+        displayItems: temp
         .filter((item) => {return item.era === '2010s'})
         .filter((item) => {return state.genre === 'All' | item.genre === state.genre})}
     })
@@ -118,48 +147,53 @@ class FilterList extends Component {
   sortByInitial = () => {
     this.setState((state) => {
       return {...state,
-        items: state.items.sort((a,b) => {return a.artist.localeCompare(b.artist)}),
+        displayItems: state.items.sort((a,b) => {return a.artist.localeCompare(b.artist)}),
         sort: true,
       }
     })
   }
 
-  render() {
-    console.log(this.state.items)
-    return (
-      <div className = "ListContainer">
-        <div className = "HeaderContainer">
-          <h1 className = "Header">Find Your Favorite Musicians!</h1>
-          <GenreFilter onClickAll={this.filterGenreAll} onClickRap={this.filterRap} onClickPop={this.filterPop}/>
-          <EraFilter onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
-          <button className = "SortButton" onClick={this.sortByInitial}>Sort by initial</button>
-        </div>
-        <div className = "ItemContainer">
-          {
-            this.state.items.map((item, key) => {
-              return <div className = "Items"><FilterItem key={item.artist} artist={item.artist} genre={item.genre} img={item.img}/></div>
-            })
-          }
-        </div> 
-      </div>
-    )
+  toggleFavorite = (item) => {
+    if(this.state.favoriteItems.indexOf(item) === -1) {
+      item.favorited = true;
+      let temp = this.state.items.filter((el) => {return el.artist !== item.artist});
+      this.setState((state) => {
+        return {...state,
+          items: temp.concat([item]),
+          favoriteItems: state.favoriteItems.concat([item]),
+        }
+      })
+    } else {
+      let temp = this.state.items;
+      for(let i = 0;  i < temp.length; i++) {
+        if(temp[i].artist === item.artist) {
+          temp[i].favorited = false;
+        }
+      }
+      this.setState((state) => {
+        return {...state,
+          items: temp,
+          favoriteItems: state.favoriteItems.filter((el) => {return el.artist !== item.artist}),
+        }
+      })
+    }
   }
 }
 
 const initialItems = () => {
   return [
-    {id: 0, artist: 'Gunna', img: {gunnaImg}, genre: 'Rap', era: '2010s'},
-    {id: 1, artist: 'Drake', img: {brockhamptonImg}, genre: 'Rap', era: '2010s'},
-    {id: 2, artist: 'Eminem', img: {gunnaImg}, genre: 'Rap', era: '2000s'},
+    {id: 0, artist: 'Gunna', img: {gunnaImg}, genre: 'Rap', era: '2010s', favorited: false},
+    {id: 1, artist: 'Drake', img: {brockhamptonImg}, genre: 'Rap', era: '2010s', favorited: false},
+    {id: 2, artist: 'Eminem', img: {gunnaImg}, genre: 'Rap', era: '2000s', favorited: false},
     {id: 3, artist: '2Pac', img: {gunnaImg}, genre: 'Rap', era: '1990s'},
-    {id: 4, artist: 'The Notorious B.I.G.', img: {brockhamptonImg}, genre: 'Rap', era: '1990s'},
-    {id: 5, artist: 'Flo Rida', img: {gunnaImg}, genre: 'Rap', era: '2000s'},
-    {id: 6, artist: 'Prince', img: {gunnaImg}, genre: 'Pop', era: '1990s'},
-    {id: 7, artist: 'Michael Jackson', img: {brockhamptonImg}, genre: 'Pop', era: '1990s'},
-    {id: 8, artist: 'Brittany Spears', img: {gunnaImg}, genre: 'Pop', era: '2000s'},
-    {id: 9, artist: 'Justin Timberlake', img: {gunnaImg}, genre: 'Pop', era: '2000s'},
-    {id: 10, artist: 'Taylor Swift', img: {brockhamptonImg}, genre: 'Pop', era: '2010s'},
-    {id: 11, artist: 'Kesha', img: {gunnaImg}, genre: 'Pop', era: '2010s'},
+    {id: 4, artist: 'The Notorious B.I.G.', img: {brockhamptonImg}, genre: 'Rap', era: '1990s', favorited: false},
+    {id: 5, artist: 'Flo Rida', img: {gunnaImg}, genre: 'Rap', era: '2000s', favorited: false},
+    {id: 6, artist: 'Prince', img: {gunnaImg}, genre: 'Pop', era: '1990s', favorited: false},
+    {id: 7, artist: 'Michael Jackson', img: {brockhamptonImg}, genre: 'Pop', era: '1990s', favorited: false},
+    {id: 8, artist: 'Brittany Spears', img: {gunnaImg}, genre: 'Pop', era: '2000s', favorited: false},
+    {id: 9, artist: 'Justin Timberlake', img: {gunnaImg}, genre: 'Pop', era: '2000s', favorited: false},
+    {id: 10, artist: 'Taylor Swift', img: {brockhamptonImg}, genre: 'Pop', era: '2010s', favorited: false},
+    {id: 11, artist: 'Kesha', img: {gunnaImg}, genre: 'Pop', era: '2010s', favorited: false},
   ];
 }
 
