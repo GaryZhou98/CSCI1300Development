@@ -27,7 +27,7 @@ class FilterList extends Component {
 
   render() {
     let favoriteButtonText = this.state.favoriteOnly ? 'Show All' : 'Show Favorites Only'
-    console.log(this.state)
+    console.log(this.state.displayItems);
     return (
       <div className = "ListContainer">
         <div className = "HeaderContainer">
@@ -35,12 +35,14 @@ class FilterList extends Component {
           <GenreFilter onClickAll={this.filterGenreAll} onClickRap={this.filterRap} onClickPop={this.filterPop}/>
           <EraFilter onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
           <button className = "SortButton" onClick={this.sortByInitial}>Sort by initial</button>
-          <button className = "SortButton" onClick={() => {this.setState((state)=> {return {...state, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
+          <button className = "SortButton" onClick={() => {this.setState((state)=> {return {...state, displayItems: state.displayItems, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
         </div>
         <div className = "ItemContainer">
           {
             this.state.displayItems.map((item, key) => {
-              return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} favoriteOnly={this.state.favoriteOnly} toggleFavorite={() => {this.toggleFavorite(item)}} artist={item.artist} genre={item.genre} img={item.img}/></div>
+              if(!this.state.favoriteOnly || item.favorited) {
+                return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} favoriteOnly={this.state.favoriteOnly} toggleFavorite={() => {this.addToFavorite(item)}} artist={item.artist} genre={item.genre} img={item.img}/></div>
+              }
             })
           }
         </div> 
@@ -51,7 +53,7 @@ class FilterList extends Component {
   
   filterGenreAll = () => {
     this.setState((state) => {
-      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
+      let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
@@ -63,7 +65,7 @@ class FilterList extends Component {
 
   filterRap = () => {
     this.setState((state) => {
-      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
+      let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
@@ -77,7 +79,7 @@ class FilterList extends Component {
 
   filterPop = () => {
     this.setState((state) => {
-      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
+      let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
@@ -92,7 +94,7 @@ class FilterList extends Component {
   
   filterEraAll = () => {
     this.setState((state) => {
-      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
+      let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
@@ -104,7 +106,7 @@ class FilterList extends Component {
 
   filterNineties = () => {
     this.setState((state) => {
-      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
+      let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
@@ -118,7 +120,7 @@ class FilterList extends Component {
 
   filterZeros = () => {
     this.setState((state) => {
-      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
+      let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
@@ -132,7 +134,7 @@ class FilterList extends Component {
 
   filterTens = () => {
     this.setState((state) => {
-      let temp = this.state.favoriteOnly ? this.state.favoriteItems : this.state.items;
+      let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
@@ -153,9 +155,9 @@ class FilterList extends Component {
     })
   }
 
-  toggleFavorite = (item) => {
-    if(this.state.favoriteItems.indexOf(item) === -1) {
-      item.favorited = true;
+  addToFavorite = (item) => {
+    // if(this.state.favoriteItems.indexOf(item) === -1) {
+      item.favorited = !item.favorited;
       let temp = this.state.items.filter((el) => {return el.artist !== item.artist});
       this.setState((state) => {
         return {...state,
@@ -163,20 +165,20 @@ class FilterList extends Component {
           favoriteItems: state.favoriteItems.concat([item]),
         }
       })
-    } else {
-      let temp = this.state.items;
-      for(let i = 0;  i < temp.length; i++) {
-        if(temp[i].artist === item.artist) {
-          temp[i].favorited = false;
-        }
-      }
-      this.setState((state) => {
-        return {...state,
-          items: temp,
-          favoriteItems: state.favoriteItems.filter((el) => {return el.artist !== item.artist}),
-        }
-      })
-    }
+  //   } else {
+  //     let temp = this.state.items;
+  //     for(let i = 0;  i < temp.length; i++) {
+  //       if(temp[i].artist === item.artist) {
+  //         temp[i].favorited = false;
+  //       }
+  //     }
+  //     this.setState((state) => {
+  //       return {...state,
+  //         items: temp,
+  //         favoriteItems: state.favoriteItems.filter((el) => {return el.artist !== item.artist}),
+  //       }
+  //     })
+  //   }
   }
 }
 

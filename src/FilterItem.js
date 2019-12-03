@@ -24,19 +24,13 @@ class FilterItem extends Component {
 
   render() {
     let icon = this.state.favorited ? <Favorite/> : <FavoriteBorder/>
-    if(!this.props.favoriteOnly || this.state.favorited) {
-      return (
-        <div className="Item">
-          <img src={this.state.img} alt='Artist'/>
-          <h3 style={{"marginBottom": "2px",}}>{this.state.artist}</h3> 
-          <text className="Genre">Genre: {this.state.genre}</text>
-          <IconButton onClick={this.toggleFavorite}>{icon}</IconButton>
-        </div>
-      )
-    }
-
     return (
-      <div></div>
+      <div className="Item">
+        <img src={this.state.img} alt='Artist'/>
+        <h3 style={{"marginBottom": "2px",}}>{this.state.artist}</h3> 
+        <text className="Genre">Genre: {this.state.genre}</text>
+        <IconButton onClick={this.toggleFavorite}>{icon}</IconButton>
+      </div>
     )
   }
 }

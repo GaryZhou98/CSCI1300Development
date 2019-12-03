@@ -9,7 +9,6 @@ class GenreFilter extends Component {
     super(props);
     this.state = {
       selected: 'All', 
-      show: false,
     }
   }
 
@@ -35,7 +34,6 @@ class GenreFilter extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className = "FilterContainer">
         <div className = "HeadingContainer">
