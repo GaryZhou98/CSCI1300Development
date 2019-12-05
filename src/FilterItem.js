@@ -12,6 +12,7 @@ class FilterItem extends Component {
       artist: this.props.artist,
       img: this.props.img,
       genre: this.props.genre,
+      era: this.props.era,
     }
   }
 
@@ -25,10 +26,10 @@ class FilterItem extends Component {
   render() {
     let icon = this.state.favorited ? <Favorite/> : <FavoriteBorder/>
     return (
-      <div className="Item">
-        <img src={this.state.img} alt='Artist'/>
-        <h3 style={{"marginBottom": "2px",}}>{this.state.artist}</h3> 
-        <text className="Genre">Genre: {this.state.genre}</text>
+      <div className="Item" style={{backgroundImage :  `url(${this.state.img})`}}>
+        <text className="Artist">{this.state.artist}</text> 
+        <text className="Description"> {this.state.genre}</text>
+        <text className="Description"> {this.state.era}</text>
         <IconButton onClick={this.toggleFavorite}>{icon}</IconButton>
       </div>
     )

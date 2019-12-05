@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import gunnaImg from './img/gunna.png'
+import drakeImg from './img/drake.png'
+import eminemImg from './img/eminem.png'
+import biggieImg from './img/biggie.png'
+import britneyImg from './img/britney.png'
+import jtImg from './img/jt.png'
+import mjImg from './img/mj.png'
+import princeImg from './img/prince.png'
+import taylorImg from './img/taylor.png'
+import keshaImg from './img/kesha.png'
+import pacImg from './img/2pac.png'
+import floridaImg from './img/florida.png'
 import './FilterList.css'
-import brockhamptonImg from './img/brockhampton.png'
 import FilterItem from './FilterItem'
 import GenreFilter from './GenreFilter'
 import EraFilter from './EraFilter'
@@ -41,7 +51,7 @@ class FilterList extends Component {
           {
             this.state.displayItems.map((item, key) => {
               if(!this.state.favoriteOnly || item.favorited) {
-                return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} favoriteOnly={this.state.favoriteOnly} toggleFavorite={() => {this.addToFavorite(item)}} artist={item.artist} genre={item.genre} img={item.img}/></div>
+                return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} toggleFavorite={() => {this.addToFavorite(item)}} era={item.era} artist={item.artist} genre={item.genre} img={item.img}/></div>
               }
             })
           }
@@ -184,18 +194,18 @@ class FilterList extends Component {
 
 const initialItems = () => {
   return [
-    {id: 0, artist: 'Gunna', img: {gunnaImg}, genre: 'Rap', era: '2010s', favorited: false},
-    {id: 1, artist: 'Drake', img: {brockhamptonImg}, genre: 'Rap', era: '2010s', favorited: false},
-    {id: 2, artist: 'Eminem', img: {gunnaImg}, genre: 'Rap', era: '2000s', favorited: false},
-    {id: 3, artist: '2Pac', img: {gunnaImg}, genre: 'Rap', era: '1990s'},
-    {id: 4, artist: 'The Notorious B.I.G.', img: {brockhamptonImg}, genre: 'Rap', era: '1990s', favorited: false},
-    {id: 5, artist: 'Flo Rida', img: {gunnaImg}, genre: 'Rap', era: '2000s', favorited: false},
-    {id: 6, artist: 'Prince', img: {gunnaImg}, genre: 'Pop', era: '1990s', favorited: false},
-    {id: 7, artist: 'Michael Jackson', img: {brockhamptonImg}, genre: 'Pop', era: '1990s', favorited: false},
-    {id: 8, artist: 'Brittany Spears', img: {gunnaImg}, genre: 'Pop', era: '2000s', favorited: false},
-    {id: 9, artist: 'Justin Timberlake', img: {gunnaImg}, genre: 'Pop', era: '2000s', favorited: false},
-    {id: 10, artist: 'Taylor Swift', img: {brockhamptonImg}, genre: 'Pop', era: '2010s', favorited: false},
-    {id: 11, artist: 'Kesha', img: {gunnaImg}, genre: 'Pop', era: '2010s', favorited: false},
+    {id: 0, artist: 'Gunna', img: gunnaImg, genre: 'Rap', era: '2010s', favorited: false},
+    {id: 1, artist: 'Drake ', img: drakeImg, genre: 'Rap', era: '2010s', favorited: false},
+    {id: 2, artist: 'Eminem', img: eminemImg, genre: 'Rap', era: '2000s', favorited: false},
+    {id: 3, artist: '2Pac', img: pacImg, genre: 'Rap', era: '1990s'},
+    {id: 4, artist: 'Notorious B.I.G.', img: biggieImg, genre: 'Rap', era: '1990s', favorited: false},
+    {id: 5, artist: 'Flo Rida', img: floridaImg, genre: 'Rap', era: '2000s', favorited: false},
+    {id: 6, artist: 'Prince', img: princeImg, genre: 'Pop', era: '1990s', favorited: false},
+    {id: 7, artist: 'Michael Jackson', img: mjImg, genre: 'Pop', era: '1990s', favorited: false},
+    {id: 8, artist: 'Brittany Spears', img: britneyImg, genre: 'Pop', era: '2000s', favorited: false},
+    {id: 9, artist: 'Justin Timberlake', img: jtImg, genre: 'Pop', era: '2000s', favorited: false},
+    {id: 10, artist: 'Taylor Swift', img: taylorImg, genre: 'Pop', era: '2010s', favorited: false},
+    {id: 11, artist: 'Kesha', img: keshaImg, genre: 'Pop', era: '2010s', favorited: false},
   ];
 }
 
