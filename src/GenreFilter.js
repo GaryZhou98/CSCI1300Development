@@ -8,7 +8,7 @@ class GenreFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'All', 
+      selected: 'All',
     }
   }
 
@@ -37,13 +37,13 @@ class GenreFilter extends Component {
     return (
       <div className = "FilterContainer">
         <div className = "HeadingContainer">
-          <text className = "HeadingText">Filter By Genre: Current - {this.state.selected} </text>
+          <text className = "HeadingText"> Genre: {this.state.selected} </text>
         </div>
         <DropdownButton id="dropdown-basic-button" sz='lg' variant="Primary" drop='down' title={this.state.selected}>
           <DropdownItem toggle='true' eventKey='1' className = "FilterButton" as="button" onClick={this.filterAll}>All</DropdownItem>
           <DropdownItem toggle='true' eventKey='2' className = "FilterButton" as="button" onClick={this.filterRap}>Rap</DropdownItem>
           <DropdownItem toggle='true' eventKey='3' className = "FilterButton" as="button" onClick={this.filterPop}>Pop</DropdownItem>
-        </DropdownButton>   
+        </DropdownButton>
         {/* <Dropdown onToggle={() => {this.setState((state) => {return {...state, show: !this.state.show}})}}>
           <Dropdown.Toggle variant="Primary" id="dropdown-basic">
             {this.state.selected}
@@ -54,9 +54,9 @@ class GenreFilter extends Component {
             <Dropdown.Item eventKey='2' className = "FilterButton" as="button" onClick={this.filterRap}>Rap</Dropdown.Item>
             <Dropdown.Item eventKey='3' className = "FilterButton" as="button" onClick={this.filterPop}>Pop</Dropdown.Item>
           </Dropdown.Menu>
-      </Dropdown>*/} 
-      </div> 
-      
+      </Dropdown>*/}
+      </div>
+
     )
   }
 }

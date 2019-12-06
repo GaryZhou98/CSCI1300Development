@@ -11,6 +11,8 @@ import taylorImg from './img/taylor.png'
 import keshaImg from './img/kesha.png'
 import pacImg from './img/2pac.png'
 import floridaImg from './img/florida.png'
+import logo from './img/HitsLibrary.png'
+
 import './FilterList.css'
 import FilterItem from './FilterItem'
 import GenreFilter from './GenreFilter'
@@ -25,8 +27,8 @@ class FilterList extends Component {
       items: initialItems(),
       displayItems: initialItems(),
       favoriteItems: [],
-      genre: 'All',
-      era: 'All',
+      genre: 'Genre',
+      era: 'Era',
       sort: false,
       favoriteOnly: false,
     }
@@ -36,26 +38,46 @@ class FilterList extends Component {
 
 
   render() {
-    let favoriteButtonText = this.state.favoriteOnly ? 'Show All' : 'Show Favorites Only'
+    let favoriteButtonText = this.state.favoriteOnly ? 'Show All' : 'Favorites'
     console.log(this.state.displayItems);
     return (
       <div className = "ListContainer">
-        <div className = "HeaderContainer">
-          <h1 className = "Header">Find Your Favorite Musicians!</h1>
-          <GenreFilter onClickAll={this.filterGenreAll} onClickRap={this.filterRap} onClickPop={this.filterPop}/>
-          <EraFilter onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
-          <button className = "SortButton" onClick={this.sortByInitial}>Sort by initial</button>
-          <button className = "SortButton" onClick={() => {this.setState((state)=> {return {...state, displayItems: state.displayItems, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
-        </div>
-        <div className = "ItemContainer">
-          {
-            this.state.displayItems.map((item, key) => {
-              if(!this.state.favoriteOnly || item.favorited) {
-                return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} toggleFavorite={() => {this.addToFavorite(item)}} era={item.era} artist={item.artist} genre={item.genre} img={item.img}/></div>
+
+
+            <div className = "HeaderContainer">
+              <div class = "LogoContainer">
+                <h1 className = "Header">HitsLibrary</h1>
+              </div>
+              <div class = "OptionsContainer">
+                  <div class = "Item1">
+                    <GenreFilter onClickAll={this.filterGenreAll} onClickRap={this.filterRap} onClickPop={this.filterPop}/>
+                  </div>
+
+                  <div class = "Item2">
+                    <EraFilter onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
+                  </div>
+
+                  <div class = "Item3">
+                    <button className = "SortButton" onClick={this.sortByInitial}>Reset</button>
+                  </div>
+
+                  <div class = "Item4">
+                    <button className = "SortButton" onClick={() => {this.setState((state)=> {return {...state, displayItems: state.displayItems, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
+                  </div>
+              </div>
+
+            </div>
+            <div className = "ItemContainer">
+              {
+                this.state.displayItems.map((item, key) => {
+                  if(!this.state.favoriteOnly || item.favorited) {
+                    return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} toggleFavorite={() => {this.addToFavorite(item)}} era={item.era} artist={item.artist} genre={item.genre} img={item.img}/></div>
+                  }
+                })
               }
-            })
-          }
-        </div>
+            </div>
+
+
       </div>
     )
   }
