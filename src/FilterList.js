@@ -27,8 +27,8 @@ class FilterList extends Component {
       items: initialItems(),
       displayItems: initialItems(),
       favoriteItems: [],
-      genre: 'Genre',
-      era: 'Era',
+      genre: 'All',
+      era: 'All',
       sort: false,
       favoriteOnly: false,
     }
@@ -42,27 +42,36 @@ class FilterList extends Component {
     console.log(this.state.displayItems);
     return (
       <div className = "ListContainer">
-
-
             <div className = "HeaderContainer">
-              <div class = "LogoContainer">
+              <div className = "LogoContainer">
                 <h1 className = "Header">HitsLibrary</h1>
               </div>
-              <div class = "OptionsContainer">
-                  <div class = "Item1">
-                    <GenreFilter onClickAll={this.filterGenreAll} onClickRap={this.filterRap} onClickPop={this.filterPop}/>
+              <div className = "OptionsContainer">
+                  <div className = "Item1">
+                    <GenreFilter current={this.state.genre} onClickAll={this.filterGenreAll} onClickRap={this.filterRap} onClickPop={this.filterPop}/>
                   </div>
 
-                  <div class = "Item2">
-                    <EraFilter onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
+                  <div className = "Item2">
+                    <EraFilter current={this.state.era} onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
                   </div>
 
-                  <div class = "Item3">
+                  <div className = "Item3">
                     <button className = "SortButton" onClick={this.sortByInitial}>Reset</button>
                   </div>
 
-                  <div class = "Item4">
+                  <div className = "Item4">
                     <button className = "SortButton" onClick={() => {this.setState((state)=> {return {...state, displayItems: state.displayItems, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
+                  </div>
+
+                  <div className = "Item5">
+                    <button className = "SortButton" onClick={() => {this.setState((state)=> {return {
+                      items: initialItems(),
+                      displayItems: initialItems(),
+                      favoriteItems: [],
+                      genre: 'All',
+                      era: 'All',
+                      sort: false,
+                      favoriteOnly: false,}})}}>Reset</button>
                   </div>
               </div>
 
@@ -101,11 +110,12 @@ class FilterList extends Component {
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
+      console.log(temp)
       return {...state,
         genre: 'Rap',
         displayItems: temp
         .filter((item) => {return item.genre === 'Rap'})
-        .filter((item) => {return state.era === 'All' | item.era === state.era})}
+        .filter((item) => {console.log(state.era === 'All' | item.era === state.era); return state.era === 'All' | item.era === state.era})}
     })
   }
 
@@ -197,20 +207,6 @@ class FilterList extends Component {
           favoriteItems: state.favoriteItems.concat([item]),
         }
       })
-  //   } else {
-  //     let temp = this.state.items;
-  //     for(let i = 0;  i < temp.length; i++) {
-  //       if(temp[i].artist === item.artist) {
-  //         temp[i].favorited = false;
-  //       }
-  //     }
-  //     this.setState((state) => {
-  //       return {...state,
-  //         items: temp,
-  //         favoriteItems: state.favoriteItems.filter((el) => {return el.artist !== item.artist}),
-  //       }
-  //     })
-  //   }
   }
 }
 
