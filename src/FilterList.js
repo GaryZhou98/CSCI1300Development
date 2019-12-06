@@ -46,7 +46,9 @@ class FilterList extends Component {
 
             <div className = "HeaderContainer">
               <div class = "LogoContainer">
-                <h1 className = "Header">HitsLibrary</h1>
+                <div class = "LogoText">
+                    <h1 className = "Header">HitsLibrary</h1>
+                </div>
               </div>
               <div class = "OptionsContainer">
                   <div class = "Item1">
@@ -58,7 +60,7 @@ class FilterList extends Component {
                   </div>
 
                   <div class = "Item3">
-                    <button className = "SortButton" onClick={this.sortByInitial}>Reset</button>
+                    <button className = "SortButton" onClick={this.sortByInitial}>Sort</button>
                   </div>
 
                   <div class = "Item4">
