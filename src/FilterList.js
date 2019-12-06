@@ -194,7 +194,7 @@ class FilterList extends Component {
 
 const initialItems = () => {
   return [
-    {id: 0, artist: 'Gunna', img: gunnaImg, genre: 'Rap', era: '2010s', favorited: false},
+    {id: 0, artist:  'Gunna', img: gunnaImg, genre: 'Rap', era: '2010s', favorited: false},
     {id: 1, artist: 'Drake ', img: drakeImg, genre: 'Rap', era: '2010s', favorited: false},
     {id: 2, artist: 'Eminem', img: eminemImg, genre: 'Rap', era: '2000s', favorited: false},
     {id: 3, artist: '2Pac', img: pacImg, genre: 'Rap', era: '1990s'},
