@@ -55,20 +55,20 @@ class FilterList extends Component {
               }
             })
           }
-        </div> 
+        </div>
       </div>
     )
   }
 
-  
+
   filterGenreAll = () => {
     this.setState((state) => {
       let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
-      return {...state, 
-        genre: 'All', 
+      return {...state,
+        genre: 'All',
         displayItems: temp.filter((item) => {return state.era === 'All' | item.era === state.era})}
     })
   }
@@ -79,8 +79,8 @@ class FilterList extends Component {
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
-      return {...state, 
-        genre: 'Rap', 
+      return {...state,
+        genre: 'Rap',
         displayItems: temp
         .filter((item) => {return item.genre === 'Rap'})
         .filter((item) => {return state.era === 'All' | item.era === state.era})}
@@ -93,23 +93,23 @@ class FilterList extends Component {
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
-      return {...state, 
-        genre: 'Pop', 
+      return {...state,
+        genre: 'Pop',
         displayItems: temp
         .filter((item) => {return item.genre === 'Pop'})
         .filter((item) => {return state.era === 'All' | item.era === state.era})}
     })
   }
 
-  
+
   filterEraAll = () => {
     this.setState((state) => {
       let temp = this.state.items;
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
-      return {...state, 
-        era: 'All', 
+      return {...state,
+        era: 'All',
         displayItems: temp.filter((item) => {return state.genre === 'All' | item.genre === state.genre})}
     })
   }
@@ -120,7 +120,7 @@ class FilterList extends Component {
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
-      return {...state, 
+      return {...state,
         era: '1990s',
         displayItems: temp
         .filter((item) => {return item.era === '1990s'})
@@ -134,7 +134,7 @@ class FilterList extends Component {
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
-      return {...state, 
+      return {...state,
         era: '2000s',
         displayItems: temp
         .filter((item) => {return item.era === '2000s'})
@@ -148,7 +148,7 @@ class FilterList extends Component {
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)})
       }
-      return {...state, 
+      return {...state,
         era: '2010s',
         displayItems: temp
         .filter((item) => {return item.era === '2010s'})
