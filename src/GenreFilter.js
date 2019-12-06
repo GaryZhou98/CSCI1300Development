@@ -8,7 +8,7 @@ class GenreFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: 'All',
+      selected: this.props.current,
     }
   }
 

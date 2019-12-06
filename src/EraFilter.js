@@ -8,7 +8,7 @@ class EraFilter extends Component {
     super(props);
 
     this.state = {
-      selected: 'All',
+      selected: this.props.current,
     }
   }
 
@@ -47,9 +47,10 @@ class EraFilter extends Component {
           <text className = "HeadingText">Era: {this.state.selected} </text>
         </div>
         <DropdownButton id="dropdown-basic-button" sz='lg' variant="Primary" drop='down' title={this.state.selected}>
-          <DropdownItem eventKey='1' className = "FilterButton" as="button" onClick={this.filterNineties}>1990s</DropdownItem>
-          <DropdownItem eventKey='2' className = "FilterButton" as="button" onClick={this.filterZeros}>2000s</DropdownItem>
-          <DropdownItem eventKey='3' className = "FilterButton" as="button" onClick={this.filterTens}>2010s</DropdownItem>
+          <DropdownItem eventKey='1' className = "FilterButton" as="button" onClick={this.filterAll}>All</DropdownItem>
+          <DropdownItem eventKey='2' className = "FilterButton" as="button" onClick={this.filterNineties}>1990s</DropdownItem>
+          <DropdownItem eventKey='3' className = "FilterButton" as="button" onClick={this.filterZeros}>2000s</DropdownItem>
+          <DropdownItem eventKey='4' className = "FilterButton" as="button" onClick={this.filterTens}>2010s</DropdownItem>
         </DropdownButton>
         {/* <div className = "ButtonContainer">
           <button id='All' className = "FilterButton" onClick={this.filterAll}>All</button>
