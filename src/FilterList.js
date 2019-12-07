@@ -45,7 +45,7 @@ class FilterList extends Component {
             <div className = "HeaderContainer">
               <div class = "LogoContainer">
                 <div class = "LogoText">
-                    <h1 className = "Header">HitsLibrary</h1>
+                    <h1 className = "Header">HitsFinder</h1>
                 </div>
               </div>
               <div className = "OptionsContainer">
