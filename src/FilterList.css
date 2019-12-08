@@ -11,7 +11,6 @@
   padding-bottom: 40px;
 }
 
-
 .LogoContainer {
     width: 300px;
     height: 80px;
@@ -27,49 +26,40 @@
   margin-bottom: 41px;
 }
 
-
 .Item1 {
+    border-left: 4px;
     margin-top: 20px;
-    /* margin-bottom: 17px; */
     margin-left: 30px;
 }
 
 .Item2 {
     margin-top: 20px;
-    /* margin-bottom: 17px; */
     margin-left: 30px;
 }
 
 .Item3 {
+    border-left: 10px;
     margin-top: 20px;
-    /* margin-bottom: 17px; */
     margin-left: 30px;
 }
 
 .Item4 {
     margin-top: 20px;
-    /* margin-bottom: 17px; */
     margin-left: 30px;
 }
 
 .Item5 {
     margin-top: 20px;
-    /* margin-bottom: 17px; */
     margin-left: 30px;
     margin-right: 30px;
 }
 
 .OptionsContainer {
-    /* margin-top: 60px; */
-    /* margin-bottom: 52px; */
+
   display: flex;
   flex-direction: row;
   min-width: 650px;
   background: #F8F8F8;
-
-  /* border-bottom: 10px;
-  border-color: black;
-  margin-bottom: 10px; */
 }
 
 .ItemContainer {
@@ -92,30 +82,20 @@
   font-style: normal;
   font-weight: bold;
   font-size: 42px;
-
   color: #424B56;
-  /* margin-bottom: 10px; */
   margin-top: 6px;
-  /* margin-left: 15px; */
-  /* margin-right: 15px; */
-
 }
 
 .Button {
-  /* border-radius: 15px; */
-  /* font-size: 12px; */
-  /* background-color: aliceblue; */
-  /* margin-top: 15px; */
   font-size: 18px;
-  color: #424B56;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  border-color: #424B56 ! important;
   font-family: 'Roboto Condensed', sans-serif;
-  background: #EAEAEA;
+  color: #424B56 ! important;
+  background: #F8F8F8;
   width: 98px;
   height: 37px;
-  /* width: 90px;
-  height: 30px; */
-  /* margin-right: 25%; */
-  /* align-self: flex-end; */
-  /* align-items: center; */
-  /* text-align: center; */
+
 }
