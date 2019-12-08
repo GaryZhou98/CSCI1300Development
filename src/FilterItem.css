@@ -12,7 +12,7 @@
 }
 
 .MuiIconButton-root {
-    color: white;
+    color: white ! important;
 }
 
 .Artist {
