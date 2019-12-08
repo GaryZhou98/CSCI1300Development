@@ -58,11 +58,7 @@ class FilterList extends Component {
                   </div>
 
                   <div class = "Item3">
-<<<<<<< HEAD
                     <button className = "Button" onClick={this.sortByInitial}>Sort</button>
-=======
-                    <button className = "SortButton" onClick={this.sortByInitial}>Alphabetize</button>
->>>>>>> 5ce607eeabcd5bb15429e6d33cefdb1e8ff01b05
                   </div>
 
                   <div className = "Item4">
