@@ -11,6 +11,10 @@
   top: 183px;
 }
 
+.MuiIconButton-root {
+    color: white;
+}
+
 .Artist {
   height: 48px;
   margin-left: 15px;
