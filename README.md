@@ -15,8 +15,23 @@ Website Description: Overall goal and value of the application to a user.
     filters to help the user find the musicians they like.
 
 How interface relates to the design principles:
+    Consistency and Standards: In our visual design we tried to ensure there was
+    consistency and standards in color and fonds across the page, as well as in
+    the top menu bar.
+    Color Choice: We kept our color choice standardized, opting for a greyscale
+    pallet, with dark photos and white fonts on top. We prioritized the photo
+    choice, choosing photos that have a similar color pallet, so the same font
+    colors could be used on top of each picture. We used fonts that felt
+    modern and bold, as inspired by the leading music review and aggregation
+    websites mentioned below.
+    Minimalism: originally we opted for a colorful design with extra information
+    but this made the purpose of the website confusing, and the design language
+    inconsistant. We attempted to keep only the information that was relevant
+    to the filters and to the functionality of the website. And tried to make
+    that information easy to understand in a consitant way.
 
 How data is passed down through your components:
+    All data are passed as props to children components.
 
 How user interactions can trigger changes in the state of components:
     There are two filters, genre and era. There are two genres, Pop and Rap, and
@@ -34,9 +49,8 @@ Functionality:
     alphabetical order.There are 12 musicians that are on this page. Each item
     has a picture, two text fields which are the genre and time period, and one
     sortable field, which is the name. There is a reset button that revers the page
-    to it's original state. Also, the page does not crash.
-
-TODO: Multiple filters can be applied and the sorting function.
+    to it's original state. Also, the page does not crash. Multiple filters can
+    be applied and the sorting function.
 
 React Components:
     The react components, that arent the filtering list, include filteritem and
