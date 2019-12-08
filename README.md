@@ -4,15 +4,18 @@
     Go to https://github.com/GaryZhou98/CSCI1300Development and click Clone or Download.
     Open your terminal, navigate to the directory/folder CSCI1300Development you
     just downloaded.
-    Now type in your terminal the command line "npm install", click return, wait for dependencies to install.
+    Now type in your terminal the command line "npm install", click return, wait for dependencies to install. (If you have
+    not installed node or npm, please do so first by following the guide from React Lab).
     Open Chrome.
     Then type in your terminal "npm start" this should launch the website in your browser hosted locally.
 
-- Website Description: Overall goal and value of the application to a user.
+- Website Description: Overall purpose and value of the application to a user.
     This website aims to help the user find new musicians by filtering by time period
-    and genre. The user can favorite musicians that they enjoy. This website provide
-    a currated list of top artist, much like a music review website, and provides
-    filters to help the user find the musicians they like.
+    and genre. The webpage is easy to use with two drop-down filters and a alphabetical
+    sorting button for users to quickly find what they're specifically looking for. Additionally,
+    The user can favorite musicians that they enjoy for quicker access when they return to the 
+    site. This website provide a currated list of top artist, much like a music review website, 
+    and provides filters to help the user find the musicians they like.
 
 - How interface relates to the design principles:
     - Consistency and Standards: In our visual design we tried to ensure there was
