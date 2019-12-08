@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { IconButton } from '@material-ui/core'
-import { Favorite, FavoriteBorder } from '@material-ui/icons'
+import FavoriteButton from './FavoriteButton'
 import './FilterItem.css'
 
 class FilterItem extends Component {
@@ -24,13 +23,13 @@ class FilterItem extends Component {
   }
 
   render() {
-    let icon = this.state.favorited ? <Favorite/> : <FavoriteBorder/>
+
     return (
       <div className="Item" style={{backgroundImage :  `url(${this.state.img})`}}>
         <text className="Artist">{this.state.artist}</text> 
         <text className="Description"> {this.state.genre}</text>
         <text className="Description"> {this.state.era}</text>
-        <IconButton onClick={this.toggleFavorite}>{icon}</IconButton>
+        <FavoriteButton toggleFavorite={this.toggleFavorite} favorited={this.state.favorited}></FavoriteButton>
       </div>
     )
   }

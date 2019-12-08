@@ -43,10 +43,7 @@ class EraFilter extends Component {
   render() {
     return (
       <div className = "FilterContainer">
-        <div className = "HeadingContainer">
-          <text className = "HeadingText">Era: {this.state.selected} </text>
-        </div>
-        <DropdownButton id="dropdown-basic-button" sz='lg' variant="Primary" drop='down' title={this.state.selected}>
+        <DropdownButton id="dropdown-basic-button" sz='lg' variant="Primary" drop='down' title="Filter By Era">
           <DropdownItem eventKey='1' className = "FilterButton" as="button" onClick={this.filterAll}>All</DropdownItem>
           <DropdownItem eventKey='2' className = "FilterButton" as="button" onClick={this.filterNineties}>1990s</DropdownItem>
           <DropdownItem eventKey='3' className = "FilterButton" as="button" onClick={this.filterZeros}>2000s</DropdownItem>

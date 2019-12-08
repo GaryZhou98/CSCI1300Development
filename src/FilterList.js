@@ -58,15 +58,15 @@ class FilterList extends Component {
                   </div>
 
                   <div class = "Item3">
-                    <button className = "SortButton" onClick={this.sortByInitial}>Sort</button>
+                    <button className = "Button" onClick={this.sortByInitial}>Sort</button>
                   </div>
 
                   <div className = "Item4">
-                    <button className = "SortButton" onClick={() => {this.setState((state)=> {return {...state, displayItems: state.displayItems, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
+                    <button className = "Button" onClick={() => {this.setState((state)=> {return {...state, displayItems: state.displayItems, favoriteOnly:!state.favoriteOnly}})}}>{favoriteButtonText}</button>
                   </div>
 
                   <div className = "Item5">
-                    <button className = "SortButton" onClick={() => {this.setState((state)=> {return {
+                    <button className = "Button" onClick={() => {this.setState((state)=> {return {
                       items: initialItems(),
                       displayItems: initialItems(),
                       favoriteItems: [],
@@ -193,7 +193,7 @@ class FilterList extends Component {
   sortByInitial = () => {
     this.setState((state) => {
       return {...state,
-        displayItems: state.items.sort((a,b) => {return a.artist.localeCompare(b.artist)}),
+        displayItems: state.displayItems.sort((a,b) => {return a.artist.localeCompare(b.artist)}),
         sort: true,
       }
     })
