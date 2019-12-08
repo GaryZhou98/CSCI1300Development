@@ -1,4 +1,4 @@
-.Item{
+.Item {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -9,6 +9,10 @@
   height: 240px;
   left: 91px;
   top: 183px;
+}
+
+.MuiIconButton-root {
+    color: white ! important;
 }
 
 .Artist {

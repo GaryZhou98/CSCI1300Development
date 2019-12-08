@@ -8,10 +8,12 @@
 }
 
 .ButtonContainer {
+    margin-top: 15px;
+
   text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
 }
 
 .HeadingText {
@@ -23,13 +25,58 @@
   color: #424B56;
 }
 
+.btn {
+  font-family: 'Roboto Condensed', 'Roboto', sans-serif;
+  border-width: 1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  padding: 1px 7px 2px !important;
+  border-width: 1px;
+      border-top-width: 1px;
+      border-right-width: 1px;
+      border-bottom-width: 1px;
+      border-left-width: 1px;
+  border-style: solid;
+  border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186) !important;
+  border-image: initial;
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+  display: inline-block !important;
+  border-radius:0px !important;
+  text-align: center;
+  background-color: #EAEAEA ! important;
+  width: 85px;
+  height: 37px;
+  -webkit-writing-mode: horizontal-tb !important;
+  /* font-style: normal; */
+  /* font-weight: normal; */
+  font-size: 18px ! important;
+  /* line-height: 32px; */
+  color: #424B56 ! important;
+}
+
+
 .FilterButton {
-  border-radius: 15px;
-  font-size: 18px;
+    /* margin-top: 15px; */
+    font-size: 18px;
+    color: #424B56;
+    font-family: 'Roboto Condensed', sans-serif;
+    /* background: #EAEAEA; */
+    width: 98px;
+    height: 37px;
+
+
+  /* border-radius: 15px; */
+  /* font-size: 18px; */
   background-color: aliceblue;
-  width: 90px;
-  height: 30px;
-  margin-left: 20px;
+  /* width: 90px; */
+  /* height: 30px; */
+  /* margin-left: 20px; */
   margin-right: 20px;
   margin-bottom: 5px;
 }
