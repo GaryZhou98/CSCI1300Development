@@ -7,11 +7,20 @@ class FilterItem extends Component {
     super(props);
 
     this.state = {
-      favorited: this.props.favorited,
-      artist: this.props.artist,
-      img: this.props.img,
-      genre: this.props.genre,
-      era: this.props.era,
+      favorited: this.props.item.favorited,
+      artist: this.props.item.artist,
+      img: this.props.item.img,
+      genre: this.props.item.genre,
+      era: this.props.item.era,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.item.favorited)
+    if(nextProps.item.favorited != this.state.favorited) {
+      this.setState((state) => {
+        return {...state, favorited: nextProps.item.favorited}
+      })
     }
   }
 
@@ -23,7 +32,9 @@ class FilterItem extends Component {
   }
 
   render() {
-
+    console.log("state:")
+    console.log(this.state)
+    console.log(this.props)
     return (
       <div className="Item" style={{backgroundImage :  `url(${this.state.img})`}}>
         <text className="Artist">{this.state.artist}</text> 

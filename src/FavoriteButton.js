@@ -11,6 +11,14 @@ export default class FavoriteButton extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.favorited != this.state.favorited) {
+      this.setState((state) => {
+        return {...state, favorited: nextProps.favorited}
+      })
+    }
+  }
+
   toggleFavorite = () => {
     this.props.toggleFavorite();
     this.setState((state) => {

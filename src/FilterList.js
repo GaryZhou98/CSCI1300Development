@@ -32,8 +32,6 @@ class FilterList extends Component {
       sort: false,
       favoriteOnly: false,
     }
-
-    console.log(this.state.items);
   }
 
 
@@ -43,8 +41,8 @@ class FilterList extends Component {
     return (
       <div className = "ListContainer">
             <div className = "HeaderContainer">
-              <div class = "LogoContainer">
-                <div class = "LogoText">
+              <div className = "LogoContainer">
+                <div className = "LogoText">
                     <h1 className = "Header">HitsFinder</h1>
                 </div>
               </div>
@@ -57,7 +55,7 @@ class FilterList extends Component {
                     <EraFilter current={this.state.era} onClickAll={this.filterEraAll} onClickNineties={this.filterNineties} onClickZeros={this.filterZeros} onClickTens={this.filterTens}/>
                   </div>
 
-                  <div class = "Item3">
+                  <div className = "Item3">
                     <button className = "Button" onClick={this.sortByInitial}>Alphabetize</button>
 
                   </div>
@@ -67,14 +65,7 @@ class FilterList extends Component {
                   </div>
 
                   <div className = "Item5">
-                    <button className = "Button" onClick={() => {this.setState((state)=> {return {
-                      items: initialItems(),
-                      displayItems: initialItems(),
-                      favoriteItems: [],
-                      genre: 'All',
-                      era: 'All',
-                      sort: false,
-                      favoriteOnly: false,}})}}>Reset</button>
+                    <button className = "Button" onClick={this.reset}>Reset</button>
                   </div>
               </div>
 
@@ -82,14 +73,13 @@ class FilterList extends Component {
             <div className = "ItemContainer">
               {
                 this.state.displayItems.map((item, key) => {
+                  console.log(item)
                   if(!this.state.favoriteOnly || item.favorited) {
-                    return <div className = "Items"><FilterItem key={item.artist} favorited={item.favorited} toggleFavorite={() => {this.addToFavorite(item)}} era={item.era} artist={item.artist} genre={item.genre} img={item.img}/></div>
+                    return <div className = "Items"><FilterItem key={item.id} item={item} toggleFavorite={() => {this.addToFavorite(item)}} /></div>
                   }
                 })
               }
             </div>
-
-
       </div>
     )
   }
@@ -113,7 +103,6 @@ class FilterList extends Component {
       if(state.sort) {
         temp = temp.sort((a,b) => {return a.artist.localeCompare(b.artist)});
       }
-      console.log(temp)
       return {...state,
         genre: 'Rap',
         displayItems: temp
@@ -201,24 +190,37 @@ class FilterList extends Component {
   }
 
   addToFavorite = (item) => {
-    // if(this.state.favoriteItems.indexOf(item) === -1) {
-      item.favorited = !item.favorited;
-      let temp = this.state.items.filter((el) => {return el.artist !== item.artist});
-      this.setState((state) => {
-        return {...state,
-          items: temp.concat([item]),
-          favoriteItems: state.favoriteItems.concat([item]),
-        }
-      })
+    item.favorited = !item.favorited;
+    let temp = this.state.items.filter((el) => {return el.artist !== item.artist});
+    this.setState((state) => {
+      return {...state,
+        items: temp.concat([item]),
+        favoriteItems: state.favoriteItems.concat([item]),
+      }
+    })
+  }
+
+  reset = () => {
+    this.setState((state)=> {
+      return {
+        ...state,
+        items: initialItems(),
+        displayItems: initialItems(),
+        favoriteItems: [],
+        genre: 'All',
+        era: 'All',
+        sort: false,
+        favoriteOnly: false,
+    }})
   }
 }
 
 const initialItems = () => {
   return [
     {id: 0, artist:  'Gunna', img: gunnaImg, genre: 'Rap', era: '2010s', favorited: false},
-    {id: 1, artist: 'Drake ', img: drakeImg, genre: 'Rap', era: '2010s', favorited: false},
+    {id: 1, artist: 'Drake', img: drakeImg, genre: 'Rap', era: '2010s', favorited: false},
     {id: 2, artist: 'Eminem', img: eminemImg, genre: 'Rap', era: '2000s', favorited: false},
-    {id: 3, artist: '2Pac', img: pacImg, genre: 'Rap', era: '1990s'},
+    {id: 3, artist: '2Pac', img: pacImg, genre: 'Rap', era: '1990s', favorited: false},
     {id: 4, artist: 'Notorious B.I.G.', img: biggieImg, genre: 'Rap', era: '1990s', favorited: false},
     {id: 5, artist: 'Flo Rida', img: floridaImg, genre: 'Rap', era: '2000s', favorited: false},
     {id: 6, artist: 'Prince', img: princeImg, genre: 'Pop', era: '1990s', favorited: false},
