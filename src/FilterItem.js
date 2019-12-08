@@ -16,7 +16,6 @@ class FilterItem extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.item.favorited)
     if(nextProps.item.favorited != this.state.favorited) {
       this.setState((state) => {
         return {...state, favorited: nextProps.item.favorited}
@@ -32,9 +31,6 @@ class FilterItem extends Component {
   }
 
   render() {
-    console.log("state:")
-    console.log(this.state)
-    console.log(this.props)
     return (
       <div className="Item" style={{backgroundImage :  `url(${this.state.img})`}}>
         <text className="Artist">{this.state.artist}</text> 

@@ -37,7 +37,6 @@ class FilterList extends Component {
 
   render() {
     let favoriteButtonText = this.state.favoriteOnly ? 'Show All' : 'Favorites'
-    console.log(this.state.displayItems);
     return (
       <div className = "ListContainer">
             <div className = "HeaderContainer">
@@ -73,7 +72,6 @@ class FilterList extends Component {
             <div className = "ItemContainer">
               {
                 this.state.displayItems.map((item, key) => {
-                  console.log(item)
                   if(!this.state.favoriteOnly || item.favorited) {
                     return <div className = "Items"><FilterItem key={item.id} item={item} toggleFavorite={() => {this.addToFavorite(item)}} /></div>
                   }
@@ -107,7 +105,7 @@ class FilterList extends Component {
         genre: 'Rap',
         displayItems: temp
         .filter((item) => {return item.genre === 'Rap'})
-        .filter((item) => {console.log(state.era === 'All' | item.era === state.era); return state.era === 'All' | item.era === state.era})}
+        .filter((item) => {return state.era === 'All' | item.era === state.era})}
     })
   }
 
