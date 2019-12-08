@@ -36,7 +36,7 @@ class GenreFilter extends Component {
   render() {
     return (
       <div className = "FilterContainer">
-        <DropdownButton id="dropdown-basic-button" sz='lg' variant="Primary" drop='down' title="Filter By Genre">
+        <DropdownButton id="dropdown-basic-button" sz='lg' variant="Primary" drop='down' title="Genre">
           <DropdownItem toggle='true' eventKey='1' className = "FilterButton" as="button" onClick={this.filterAll}>All</DropdownItem>
           <DropdownItem toggle='true' eventKey='2' className = "FilterButton" as="button" onClick={this.filterRap}>Rap</DropdownItem>
           <DropdownItem toggle='true' eventKey='3' className = "FilterButton" as="button" onClick={this.filterPop}>Pop</DropdownItem>
